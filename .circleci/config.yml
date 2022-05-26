@@ -2,7 +2,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: migruiz/stairslights
+      IMAGE_NAME: migruiz/utilityroom
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
@@ -47,7 +47,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: main
+              only: master
       - publish-latest:
           requires:
             - build
@@ -55,4 +55,4 @@ workflows:
             - DockerHub
           filters:
             branches:
-              only: main
+              only: master
