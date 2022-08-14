@@ -1,0 +1,25 @@
+permit_join: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://192.168.0.11
+serial:
+  port: /dev/ttyACM0
+frontend:
+  port: 8080
+devices:
+  '0x84ba20fffea45342':
+    friendly_name: '0x84ba20fffea45342'
+  '0x00124b0024c2eaf7':
+    friendly_name: '0x00124b0024c2eaf7'
+  '0x00158d0007ecd814':
+    friendly_name: '0x00158d0007ecd814'
+  '0x00158d0007c3846b':
+    friendly_name: '0x00158d0007c3846b'
+  '0x00158d000566c0cc':
+    friendly_name: '0x00158d000566c0cc'
+  '0x00158d0005827a38':
+    friendly_name: '0x00158d0005827a38'
+  '0x00158d0007c48250':
+    friendly_name: '0x00158d0007c48250'
+advanced:
+  log_level: debug
