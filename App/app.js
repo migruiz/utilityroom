@@ -1,8 +1,7 @@
 const { Observable, from, of } = require('rxjs');var mqtt = require('./mqttCluster.js');
-const {  map,shareReplay, filter,switchMap, distinctUntilChanged} = require('rxjs/operators');
+const {  map,shareReplay,startWith, filter,switchMap, distinctUntilChanged} = require('rxjs/operators');
 
 global.mtqqLocalPath = process.env.MQTTLOCAL;
-//global.mtqqLocalPath = 'mqtt://192.168.0.11';
 
 
 
@@ -22,7 +21,7 @@ const masterSwitchSensor = new Observable(async subscriber => {
 });
 
 
-const doorSensor = rawDoorSensor.pipe(map(m => !m.contact),shareReplay(1))
+const doorSensor = rawDoorSensor.pipe( map(m => !m.contact),shareReplay(1))
 
 
 
@@ -30,6 +29,7 @@ const doorSensor = rawDoorSensor.pipe(map(m => !m.contact),shareReplay(1))
 const masterSwitchStream = masterSwitchSensor.pipe(
     filter( c=> c.action==='on' || c.action==='brightness_stop' || c.action==='brightness_move_up')
     ,map(m => m.action==='on')
+    ,startWith(true)
     ,distinctUntilChanged()
 )
 
