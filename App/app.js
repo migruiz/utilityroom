@@ -30,7 +30,6 @@ const masterSwitchStream = masterSwitchSensor.pipe(
     filter( c=> c.action==='on' || c.action==='brightness_stop' || c.action==='brightness_move_up')
     ,map(m => m.action==='on')
     ,startWith(true)
-    ,distinctUntilChanged()
 )
 
 
