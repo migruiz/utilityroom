@@ -56,9 +56,9 @@ class MQTTClient {
             }
         });
     }
-    publishData(topic, data) {
+    publishData(topic, data, options) {
         var message = JSON.stringify(data);
-        this.client.publish(topic, message);
+        this.client.publish(topic, message, options);
     }
     publishMessage(topic, message) {
         this.client.publish(topic, message);
